@@ -60,7 +60,7 @@ Gurbani text, transliteration and translations come from BaniDB by Khalis Founda
 **App category:** Personalization
 **Tags (optional):** Wallpapers, Religion & spirituality
 **Contact email:** your developer email (shown publicly on the listing)
-**Website (optional):** `https://rawsinghfit.github.io/gurbani-wallpapers/`
+**Website:** `https://sardarjidevelopers.github.io` (needed for AdMob app-ads.txt)
 
 ## First release notes
 
@@ -71,7 +71,7 @@ First release: search Gurbani by first letters or whole words, choose from 7 cal
 ## App content (Policy → App content)
 
 **Privacy policy**
-`https://rawsinghfit.github.io/gurbani-wallpapers/privacy.html`
+`https://sardarjidevelopers.github.io/gurbani-wallpapers/privacy.html`
 
 **App access:** All functionality is available without special access.
 
