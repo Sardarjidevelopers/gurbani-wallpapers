@@ -16,19 +16,19 @@ Everything to copy into Play Console, in the order Play Console asks for it.
 **App name** (30 characters max)
 
 ```
-Gurbani Wallpapers
+Gurbani Wallpapers & Status
 ```
 
 **Short description** (80 characters max)
 
 ```
-Turn a line of Gurbani into a calm wallpaper or WhatsApp/Instagram status.
+Make HD Gurmukhi Gurbani wallpapers and Sikh WhatsApp status images.
 ```
 
 **Full description**
 
 ```
-Find a line of Gurbani and turn it into a beautiful phone wallpaper or a WhatsApp and Instagram status image.
+Make beautiful Gurmukhi Gurbani wallpapers and Sikh status images for WhatsApp and Instagram. Find any line of Gurbani, from Japji Sahib to your favourite shabad, and turn it into an HD lock screen or home screen wallpaper in seconds. Waheguru Ji Ka Khalsa, Waheguru Ji Ki Fateh.
 
 HOW IT WORKS
 • Search by the first letter of each word, or by whole words, in English letters or Gurmukhi
@@ -49,8 +49,10 @@ MAKE IT YOURS
 • Show the pronunciation and the English meaning if you like
 • Every wallpaper shows its reference, such as the Ang number
 
-HIGH QUALITY
+HD QUALITY
 Wallpapers are saved at 1440 × 3120 pixels, sharp on almost every phone. Set one as your wallpaper from your phone's settings, or share it straight to WhatsApp, Instagram and more.
+
+Perfect for Gurpurab greetings, a daily Gurbani status, or a peaceful Sikh wallpaper that reminds you of Waheguru every time you unlock your phone.
 
 The app is free. A small banner ad and one short optional video, which unlocks saving and sharing for each wallpaper, keep it running.
 
