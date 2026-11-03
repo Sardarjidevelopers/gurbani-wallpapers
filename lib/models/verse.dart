@@ -70,6 +70,40 @@ class Verse {
         .whereType<Verse>()
         .toList();
   }
+
+  /// Parses a /hukamnamas response: every line of every shabad, in order,
+  /// each with the source and Ang of its own shabad.
+  static List<Verse> listFromHukamnama(dynamic body) {
+    if (body is! Map) return const [];
+    final shabads = body['shabads'];
+    if (shabads is! List) return const [];
+
+    final result = <Verse>[];
+    for (final shabad in shabads) {
+      if (shabad is! Map) continue;
+      final info = shabad['shabadInfo'];
+      final source = info is Map && info['source'] is Map
+          ? Map<String, dynamic>.from(info['source'] as Map)
+          : null;
+      final ang = _int(info is Map ? info['pageNo'] : null);
+      final verses = shabad['verses'];
+      if (verses is! List) continue;
+      for (final v in verses) {
+        final verse = Verse.fromJson(v, fallbackSource: source);
+        if (verse == null) continue;
+        result.add(
+          Verse(
+            gurmukhi: verse.gurmukhi,
+            transliteration: verse.transliteration,
+            meaning: verse.meaning,
+            ang: verse.ang ?? ang,
+            sourceName: verse.sourceName,
+          ),
+        );
+      }
+    }
+    return result;
+  }
 }
 
 dynamic _path(dynamic node, List<String> keys) {

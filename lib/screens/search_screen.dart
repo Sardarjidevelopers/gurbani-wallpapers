@@ -26,6 +26,8 @@ class _SearchScreenState extends State<SearchScreen> {
   bool _loading = false;
   String? _error;
   bool _hasSearched = false;
+  static const _randomLabel = 'Random shabad';
+  static const _hukamnamaLabel = "Today's Hukamnama";
   String _resultsLabel = '';
 
   // Ignores replies to searches that have since been replaced.
@@ -63,7 +65,13 @@ class _SearchScreenState extends State<SearchScreen> {
   Future<void> _random() async {
     _debounce?.cancel();
     FocusScope.of(context).unfocus();
-    await _run(_service.randomShabad, 'Random shabad');
+    await _run(_service.randomShabad, _randomLabel);
+  }
+
+  Future<void> _hukamnama() async {
+    _debounce?.cancel();
+    FocusScope.of(context).unfocus();
+    await _run(_service.todaysHukamnama, _hukamnamaLabel);
   }
 
   Future<void> _run(Future<List<Verse>> Function() load, String label) async {
@@ -92,7 +100,10 @@ class _SearchScreenState extends State<SearchScreen> {
   }
 
   void _retry() {
-    if (_resultsLabel == 'Random shabad' && _controller.text.trim().isEmpty) {
+    if (_resultsLabel == _hukamnamaLabel && _controller.text.trim().isEmpty) {
+      _hukamnama();
+    } else if (_resultsLabel == _randomLabel &&
+        _controller.text.trim().isEmpty) {
       _random();
     } else {
       _search();
@@ -219,10 +230,21 @@ class _SearchScreenState extends State<SearchScreen> {
                       const SizedBox(height: 10),
                       Align(
                         alignment: Alignment.centerLeft,
-                        child: OutlinedButton.icon(
-                          onPressed: _loading ? null : _random,
-                          icon: const Icon(Icons.shuffle, size: 18),
-                          label: const Text('Random shabad'),
+                        child: Wrap(
+                          spacing: 8,
+                          runSpacing: 8,
+                          children: [
+                            OutlinedButton.icon(
+                              onPressed: _loading ? null : _random,
+                              icon: const Icon(Icons.shuffle, size: 18),
+                              label: const Text(_randomLabel),
+                            ),
+                            OutlinedButton.icon(
+                              onPressed: _loading ? null : _hukamnama,
+                              icon: const Icon(Icons.wb_sunny_outlined, size: 18),
+                              label: const Text(_hukamnamaLabel),
+                            ),
+                          ],
                         ),
                       ),
                       const SizedBox(height: 12),

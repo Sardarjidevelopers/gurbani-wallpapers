@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 import 'dart:ui' as ui;
 
@@ -9,9 +10,15 @@ import 'package:share_plus/share_plus.dart';
 
 import '../ads/ads.dart';
 import '../models/verse.dart';
+import '../services/review_prompt.dart';
 import '../theme.dart';
 import '../wallpaper/wallpaper_canvas.dart';
 import '../wallpaper/wallpaper_style.dart';
+
+/// Added to shared wallpapers so people can find the app.
+const _shareCaption =
+    'Made with Gurbani Wallpapers: '
+    'https://play.google.com/store/apps/details?id=com.gurbaniwallpapers.gurbani_wallpapers';
 
 class EditorScreen extends StatefulWidget {
   const EditorScreen({super.key, required this.verse});
@@ -105,6 +112,7 @@ class _EditorScreenState extends State<EditorScreen> {
       _toast(
         "Saved to your gallery. Set it as wallpaper from your phone's settings.",
       );
+      unawaited(ReviewPrompt.recordSuccess());
     } on GalException catch (e) {
       _toast(
         e.type == GalExceptionType.accessDenied
@@ -135,9 +143,11 @@ class _EditorScreenState extends State<EditorScreen> {
               XFile.fromData(bytes, mimeType: 'image/png', name: fileName),
             ],
             fileNameOverrides: const [fileName],
+            text: _shareCaption,
             sharePositionOrigin: origin,
           ),
         );
+        unawaited(ReviewPrompt.recordSuccess());
       } catch (_) {
         _toast("Couldn't create the wallpaper. Please try again.");
       }

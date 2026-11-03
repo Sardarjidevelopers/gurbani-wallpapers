@@ -52,7 +52,14 @@ class BaniDbService {
 
   Future<List<Verse>> randomShabad() => _get('$_baseUrl/random/G');
 
-  Future<List<Verse>> _get(String url) async {
+  /// The latest Hukamnama from Sri Darbar Sahib.
+  Future<List<Verse>> todaysHukamnama() =>
+      _get('$_baseUrl/hukamnamas', parse: Verse.listFromHukamnama);
+
+  Future<List<Verse>> _get(
+    String url, {
+    List<Verse> Function(dynamic body) parse = Verse.listFromResponse,
+  }) async {
     final http.Response response;
     try {
       response = await _client.get(Uri.parse(url)).timeout(_timeout);
@@ -64,7 +71,7 @@ class BaniDbService {
     }
     try {
       final body = jsonDecode(utf8.decode(response.bodyBytes));
-      return Verse.listFromResponse(body);
+      return parse(body);
     } catch (_) {
       throw const BaniDbException(
         'The Gurbani database sent an unexpected reply. Please try again.',

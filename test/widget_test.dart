@@ -54,4 +54,37 @@ void main() {
     expect(BaniDbService.searchTypeFor('abc', SearchMode.wholeWords), 4);
     expect(BaniDbService.searchTypeFor('ਕ', SearchMode.wholeWords), 2);
   });
+
+  test('parses every line of a Hukamnama, with its shabad source and Ang', () {
+    final verses = Verse.listFromHukamnama({
+      'shabads': [
+        {
+          'shabadInfo': {
+            'pageNo': 7,
+            'source': {'english': 'Source Name'},
+          },
+          'verses': [
+            {
+              'verse': {'unicode': 'LINE ONE'},
+            },
+            {
+              'verse': {'unicode': 'LINE TWO'},
+              'pageNo': 8,
+            },
+            {
+              'verse': {'unicode': ' '},
+            },
+          ],
+        },
+      ],
+    });
+    expect(verses.map((v) => v.gurmukhi), ['LINE ONE', 'LINE TWO']);
+    expect(verses[0].reference, 'Source Name, Ang 7');
+    expect(verses[1].reference, 'Source Name, Ang 8');
+  });
+
+  test('ignores a malformed Hukamnama response', () {
+    expect(Verse.listFromHukamnama(null), isEmpty);
+    expect(Verse.listFromHukamnama({'shabads': 'x'}), isEmpty);
+  });
 }
