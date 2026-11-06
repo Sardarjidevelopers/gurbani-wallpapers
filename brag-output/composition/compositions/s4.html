@@ -1,0 +1,28 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; font-family: "Inter", sans-serif; color: #EEF0F2; }
+    .clip { position: absolute; }
+    .wrap { position: absolute; inset: 0; }
+    .disp { font-family: "Outfit", sans-serif; font-weight: 600; letter-spacing: -0.02em; text-align: center; line-height: 1.08; }
+    .body { font-family: "Inter", sans-serif; text-align: center; line-height: 1.25; }
+    .gold { color: #E0B85C; }
+</style>
+  <div id="root" data-composition-id="s4" data-width="1080" data-height="1920">
+    <div id="s4-wrap" class="wrap">
+      <div id="s4-a" class="clip" data-start="0.45" data-duration="5.25" style="left:108px; top:640px; width:864px;"><div id="s4-at" class="disp" style="font-size:92px">Straight from<br>BaniDB.</div></div>
+      <div id="s4-b" class="clip" data-start="1.85" data-duration="3.85" style="left:108px; top:960px; width:864px;"><div id="s4-bt" class="body" style="font-size:56px; font-weight:500; color:#D6DFE9;">Shown exactly as<br>it is received.</div></div>
+      <div id="s4-c" class="clip" data-start="4.05" data-duration="1.6500000000000004" style="left:108px; top:1250px; width:864px;"><div id="s4-ct" class="disp gold" style="font-size:88px">Never edited.</div></div>
+      <div id="s4-foot" class="clip" data-start="1.0" data-duration="4.7" style="left:108px; top:1600px; width:864px;"><div id="s4-footm" class="body" style="font-size:32px; color:#9FB0C2;">BaniDB is run by Khalis Foundation.<br>This app is not made by or affiliated with them.</div></div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#s4-wrap", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power1.out" }, 0);
+      tl.to("#s4-wrap", { opacity: 0, duration: 0.4, ease: "power1.in" }, 5.3);
+      tl.fromTo("#s4-at", { opacity: 0, y: 36 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.45);
+      tl.fromTo("#s4-bt", { opacity: 0, y: 36 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 1.85);
+      tl.fromTo("#s4-ct", { opacity: 0, y: 36 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 4.05);
+      tl.fromTo("#s4-footm", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 1.0);
+    window.__timelines["s4"] = tl;
+  </script>
+</template>

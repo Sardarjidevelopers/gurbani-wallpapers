@@ -17,3 +17,6 @@
 .idea/
 .vscode/
 .metadata
+
+# Video tool cache and preview snapshots (brag-output)
+brag-output/composition/.hyperframes/
