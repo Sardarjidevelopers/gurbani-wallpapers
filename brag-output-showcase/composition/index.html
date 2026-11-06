@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="assets/gsap.min.js"></script>
+    <style>
+      :root { --ground: #0E1B2C; --gold: #E0B85C; --ink: #EEF0F2; --muted: #9FB0C2; }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: var(--ground); }
+      #bg { position: absolute; inset: 0; background: radial-gradient(900px 900px at 50% 38%, #1B3552 0%, #0E1B2C 62%, #09121E 100%); }
+      .clip { position: absolute; }
+      .disp { font-family: "Outfit", sans-serif; font-weight: 600; letter-spacing: -0.02em; text-align: center; line-height: 1.08; color: var(--ink); }
+      .body { font-family: "Inter", sans-serif; text-align: center; line-height: 1.25; color: var(--muted); }
+      .gold { color: var(--gold); }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="23.8" data-width="1080" data-height="1920">
+      <div id="bg"></div>
+      <div id="i-title" class="clip" data-start="0" data-duration="3.6" data-track-index="1" style="left:108px; top:760px; width:864px;"><div id="i-titlet" class="disp" style="font-size:96px">Five calm wallpapers</div></div>
+      <div id="i-sub" class="clip" data-start="0.6" data-duration="3.0" data-track-index="14" style="left:108px; top:1000px; width:864px;"><div id="i-subt" class="body" style="font-size:44px">Made in the Gurbani Wallpapers app</div></div>
+      <div id="c-kesri" class="clip" data-start="3.6" data-duration="2.8" data-track-index="2" style="left:180px; top:230px; width:720px; height:1280px;"><img id="c-kesri-i" src="assets/wp-kesri.png" alt="A finished Kesri wallpaper made in the app" style="width:100%; height:100%; object-fit:cover; display:block; border-radius:44px; border:2px solid rgba(238,240,242,0.18); box-shadow:0 30px 80px rgba(0,0,0,0.5);" /></div>
+      <div id="l-kesri" class="clip" data-start="3.6" data-duration="2.8" data-track-index="8" style="left:180px; top:1580px; width:720px;"><div id="l-kesri-t" class="disp gold" style="font-size:64px">Kesri</div></div>
+      <div id="c-neela" class="clip" data-start="6.4" data-duration="2.8" data-track-index="3" style="left:180px; top:230px; width:720px; height:1280px;"><img id="c-neela-i" src="assets/wp-neela.png" alt="A finished Neela wallpaper made in the app" style="width:100%; height:100%; object-fit:cover; display:block; border-radius:44px; border:2px solid rgba(238,240,242,0.18); box-shadow:0 30px 80px rgba(0,0,0,0.5);" /></div>
+      <div id="l-neela" class="clip" data-start="6.4" data-duration="2.8" data-track-index="9" style="left:180px; top:1580px; width:720px;"><div id="l-neela-t" class="disp gold" style="font-size:64px">Neela</div></div>
+      <div id="c-sarovar" class="clip" data-start="9.2" data-duration="2.8" data-track-index="4" style="left:180px; top:230px; width:720px; height:1280px;"><img id="c-sarovar-i" src="assets/wp-sarovar.png" alt="A finished Sarovar wallpaper made in the app" style="width:100%; height:100%; object-fit:cover; display:block; border-radius:44px; border:2px solid rgba(238,240,242,0.18); box-shadow:0 30px 80px rgba(0,0,0,0.5);" /></div>
+      <div id="l-sarovar" class="clip" data-start="9.2" data-duration="2.8" data-track-index="10" style="left:180px; top:1580px; width:720px;"><div id="l-sarovar-t" class="disp gold" style="font-size:64px">Sarovar</div></div>
+      <div id="c-goldleaf" class="clip" data-start="12.0" data-duration="2.8" data-track-index="5" style="left:180px; top:230px; width:720px; height:1280px;"><img id="c-goldleaf-i" src="assets/wp-goldleaf.png" alt="A finished Gold leaf wallpaper made in the app" style="width:100%; height:100%; object-fit:cover; display:block; border-radius:44px; border:2px solid rgba(238,240,242,0.18); box-shadow:0 30px 80px rgba(0,0,0,0.5);" /></div>
+      <div id="l-goldleaf" class="clip" data-start="12.0" data-duration="2.8" data-track-index="11" style="left:180px; top:1580px; width:720px;"><div id="l-goldleaf-t" class="disp gold" style="font-size:64px">Gold leaf</div></div>
+      <div id="c-night" class="clip" data-start="14.8" data-duration="2.8" data-track-index="6" style="left:180px; top:230px; width:720px; height:1280px;"><img id="c-night-i" src="assets/wp-night.png" alt="A finished Night wallpaper made in the app" style="width:100%; height:100%; object-fit:cover; display:block; border-radius:44px; border:2px solid rgba(238,240,242,0.18); box-shadow:0 30px 80px rgba(0,0,0,0.5);" /></div>
+      <div id="l-night" class="clip" data-start="14.8" data-duration="2.8" data-track-index="12" style="left:180px; top:1580px; width:720px;"><div id="l-night-t" class="disp gold" style="font-size:64px">Night</div></div>
+      <div id="o-icon" class="clip" data-start="17.6" data-duration="6.2" data-track-index="15" style="left:390px; top:520px; width:300px; height:300px;"><img id="o-icont" src="assets/icon.png" alt="Gurbani Wallpapers icon" style="width:100%; height:100%; border-radius:68px; box-shadow:0 0 90px rgba(224,184,92,0.28); display:block;" /></div>
+      <div id="o-title" class="clip" data-start="17.9" data-duration="5.9" data-track-index="16" style="left:108px; top:880px; width:864px;"><div id="o-titlet" class="disp" style="font-size:90px">Gurbani Wallpapers</div></div>
+      <div id="o-line" class="clip" data-start="19.0" data-duration="4.8" data-track-index="17" style="left:158px; top:1090px; width:764px;"><div id="o-linet" class="body" style="font-size:40px">Gurbani from BaniDB, shown exactly as received</div></div>
+      <div id="o-pill" class="clip" data-start="20.4" data-duration="3.4" data-track-index="18" style="left:270px; top:1240px; width:540px;"><div id="o-pillt" class="body" style="background:#E0B85C; color:#1A1407; font-weight:700; font-size:46px; border-radius:999px; padding:22px 0;">Free on Google Play</div></div>
+      <audio id="vo1" data-start="0.4" data-track-index="21" data-volume="1" src="assets/vo-1.wav"></audio>
+      <audio id="vo2" data-start="3.9" data-track-index="22" data-volume="1" src="assets/vo-2.wav"></audio>
+      <audio id="vo3" data-start="6.7" data-track-index="23" data-volume="1" src="assets/vo-3.wav"></audio>
+      <audio id="vo4" data-start="9.5" data-track-index="24" data-volume="1" src="assets/vo-4.wav"></audio>
+      <audio id="vo5" data-start="12.3" data-track-index="25" data-volume="1" src="assets/vo-5.wav"></audio>
+      <audio id="vo6" data-start="15.1" data-track-index="26" data-volume="1" src="assets/vo-6.wav"></audio>
+      <audio id="vo7" data-start="18.0" data-track-index="27" data-volume="1" src="assets/vo-7.wav"></audio>
+    </div>
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      window.__timelines["main"] = tl;
+      tl.fromTo("#i-titlet", { y: 30 }, { y: 0, duration: 0.6, ease: "power3.out" }, 0);
+      tl.fromTo("#i-subt", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.6);
+      tl.to("#i-titlet", { opacity: 0, duration: 0.3, ease: "power1.in" }, 3.3);
+      tl.to("#i-subt", { opacity: 0, duration: 0.3, ease: "power1.in" }, 3.3);
+      tl.fromTo("#c-kesri-i", { opacity: 0, y: 40, scale: 0.95 }, { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: "power3.out" }, 3.6);
+      tl.to("#c-kesri-i", { opacity: 0, duration: 0.3, ease: "power1.in" }, 6.1000000000000005);
+      tl.fromTo("#l-kesri-t", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 3.9);
+      tl.to("#l-kesri-t", { opacity: 0, duration: 0.3, ease: "power1.in" }, 6.1000000000000005);
+      tl.fromTo("#c-neela-i", { opacity: 0, y: 40, scale: 0.95 }, { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: "power3.out" }, 6.4);
+      tl.to("#c-neela-i", { opacity: 0, duration: 0.3, ease: "power1.in" }, 8.899999999999999);
+      tl.fromTo("#l-neela-t", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 6.7);
+      tl.to("#l-neela-t", { opacity: 0, duration: 0.3, ease: "power1.in" }, 8.899999999999999);
+      tl.fromTo("#c-sarovar-i", { opacity: 0, y: 40, scale: 0.95 }, { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: "power3.out" }, 9.2);
+      tl.to("#c-sarovar-i", { opacity: 0, duration: 0.3, ease: "power1.in" }, 11.7);
+      tl.fromTo("#l-sarovar-t", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 9.5);
+      tl.to("#l-sarovar-t", { opacity: 0, duration: 0.3, ease: "power1.in" }, 11.7);
+      tl.fromTo("#c-goldleaf-i", { opacity: 0, y: 40, scale: 0.95 }, { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: "power3.out" }, 12.0);
+      tl.to("#c-goldleaf-i", { opacity: 0, duration: 0.3, ease: "power1.in" }, 14.5);
+      tl.fromTo("#l-goldleaf-t", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 12.3);
+      tl.to("#l-goldleaf-t", { opacity: 0, duration: 0.3, ease: "power1.in" }, 14.5);
+      tl.fromTo("#c-night-i", { opacity: 0, y: 40, scale: 0.95 }, { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: "power3.out" }, 14.8);
+      tl.to("#c-night-i", { opacity: 0, duration: 0.3, ease: "power1.in" }, 17.3);
+      tl.fromTo("#l-night-t", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 15.100000000000001);
+      tl.to("#l-night-t", { opacity: 0, duration: 0.3, ease: "power1.in" }, 17.3);
+      tl.fromTo("#o-icont", { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.7, ease: "power3.out" }, 17.6);
+      tl.fromTo("#o-titlet", { opacity: 0, y: 36 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 17.9);
+      tl.fromTo("#o-linet", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 19.0);
+      tl.fromTo("#o-pillt", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 20.4);
+    </script>
+  </body>
+</html>
