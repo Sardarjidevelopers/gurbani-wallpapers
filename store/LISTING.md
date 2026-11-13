@@ -70,6 +70,12 @@ Gurbani text, transliteration and translations come from BaniDB by Khalis Founda
 First release: search Gurbani by first letters or whole words, choose from 7 calm backgrounds and 5 Gurmukhi fonts, and save or share your wallpaper.
 ```
 
+## Release notes: version 1.2
+
+```
+New: a Today's Hukamnama button on the search screen, a Play Store link on shared wallpapers, and a one-time rating prompt. Also a new ad partner and small improvements.
+```
+
 ## App content (Policy → App content)
 
 **Privacy policy**

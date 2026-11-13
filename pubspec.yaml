@@ -1,7 +1,7 @@
 name: gurbani_wallpapers
 description: "Find a line of Gurbani and turn it into a wallpaper or status."
 publish_to: 'none'
-version: 1.1.0+2
+version: 1.2.0+3
 
 environment:
   sdk: ^3.8.0
@@ -10,6 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
   gal: ^2.3.3
+  gma_mediation_meta: ^1.7.1
   google_fonts: ^8.2.1
   google_mobile_ads: ^9.2.0
   http: ^1.6.0
