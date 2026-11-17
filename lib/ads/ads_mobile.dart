@@ -24,22 +24,48 @@ bool get _supported => Platform.isAndroid || Platform.isIOS;
 /// Becomes true once consent has been handled and the SDK is ready.
 final _adsReady = ValueNotifier<bool>(false);
 
+/// Seconds to wait before each attempt to start ads. If the phone is offline
+/// at launch (so the consent check cannot run), we keep trying in the
+/// background instead of leaving ads off until the next app start.
+const _startDelays = [0, 10, 30, 60, 120, 300, 600];
+
+bool _starting = false;
+
 /// Asks for consent where the law requires it (EU/UK), then starts AdMob.
 /// Call after runApp so the consent form has a screen to show on.
+/// Retries with a growing delay when the consent check fails (for example
+/// with no internet), so ads still start once the connection is back.
 Future<void> initAds() async {
-  if (!_supported) return;
+  if (!_supported || _adsReady.value || _starting) return;
+  _starting = true;
+  try {
+    for (final seconds in _startDelays) {
+      if (seconds > 0) await Future<void>.delayed(Duration(seconds: seconds));
+      if (await _tryStartAds()) return;
+    }
+  } finally {
+    _starting = false;
+  }
+}
 
+Future<bool> _tryStartAds() async {
   final consentDone = Completer<void>();
+  void finish() {
+    if (!consentDone.isCompleted) consentDone.complete();
+  }
+
   ConsentInformation.instance.requestConsentInfoUpdate(
     ConsentRequestParameters(),
-    () => ConsentForm.loadAndShowConsentFormIfRequired(
-      (_) => consentDone.complete(),
-    ),
-    (_) => consentDone.complete(),
+    () => ConsentForm.loadAndShowConsentFormIfRequired((_) => finish()),
+    (_) => finish(),
   );
-  await consentDone.future;
+  // A consent request that never answers must not block ads forever.
+  await consentDone.future.timeout(
+    const Duration(seconds: 30),
+    onTimeout: () {},
+  );
 
-  if (!await ConsentInformation.instance.canRequestAds()) return;
+  if (!await ConsentInformation.instance.canRequestAds()) return false;
 
   // Family-safe ads only.
   await MobileAds.instance.updateRequestConfiguration(
@@ -47,6 +73,7 @@ Future<void> initAds() async {
   );
   await MobileAds.instance.initialize();
   _adsReady.value = true;
+  return true;
 }
 
 /// Whether the app must offer a way to change ad consent (EU/UK users).
@@ -136,6 +163,8 @@ class _AdBannerState extends State<AdBanner> {
   BannerAd? _ad;
   bool _loaded = false;
   int? _width;
+  Timer? _retryTimer;
+  int _failures = 0;
 
   @override
   void initState() {
@@ -166,18 +195,33 @@ class _AdBannerState extends State<AdBanner> {
       request: const AdRequest(),
       listener: BannerAdListener(
         onAdLoaded: (_) {
+          _failures = 0;
           if (mounted) setState(() => _loaded = true);
         },
         onAdFailedToLoad: (ad, _) {
           ad.dispose();
           if (mounted) setState(() => _ad = null);
+          _scheduleRetry();
         },
       ),
     )..load();
   }
 
+  /// Tries the banner again after a short wait (no fill, weak signal).
+  /// Gives up after a few attempts so a broken connection never loops.
+  void _scheduleRetry() {
+    if (_failures >= 5 || !mounted) return;
+    _failures++;
+    _retryTimer?.cancel();
+    _retryTimer = Timer(Duration(seconds: 15 * _failures), () {
+      _width = null;
+      _load();
+    });
+  }
+
   @override
   void dispose() {
+    _retryTimer?.cancel();
     _adsReady.removeListener(_load);
     _ad?.dispose();
     super.dispose();
